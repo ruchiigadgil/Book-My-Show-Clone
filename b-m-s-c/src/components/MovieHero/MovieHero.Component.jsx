@@ -54,7 +54,8 @@ const MovieHero = () => {
             }}
           ></div>
 
-          <div className="absolute z-30 left-24 top-40 flex items-center gap-10">
+          {/* Center the hero content horizontally: place at 50% and translateX -50% */}
+          <div className="absolute z-30 left-1/2 top-40 flex items-center gap-10 transform -translate-x-1/2">
             <div className="w-64 h-96">
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}

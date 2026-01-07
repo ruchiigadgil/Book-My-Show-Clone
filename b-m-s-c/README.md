@@ -1,3 +1,137 @@
+# Book My Show Clone (b-m-s-c)
+
+A responsive single-page React application that mimics the BookMyShow UI for browsing movies, viewing details and initiating payments. Built with Create React App, Tailwind CSS and TMDB (The Movie Database) as the data source.
+
+## Table of contents
+
+- Features
+- Tech stack
+- Prerequisites
+- Quick start (development)
+- Environment variables
+- Scripts
+- Notes & troubleshooting
+- Contributing
+- License
+
+## Features
+
+- Browse movies (data fetched from TMDB API)
+- Hero carousel and poster sliders (react-slick)
+- Movie detail pages
+- Simple payment modal using Razorpay (test key present in code)
+- Responsive layout with Tailwind CSS
+
+## Tech stack
+
+- React (Create React App)
+- Tailwind CSS
+- Axios for API calls
+- react-slick + slick-carousel for carousels
+- Headless UI for modal/dialogs
+
+## Prerequisites
+
+- Node.js (v16 or later recommended)
+- npm (comes with Node.js) or yarn
+
+## Quick start (development)
+
+1. Open a terminal and change to this folder:
+
+```powershell
+cd "C:\Users\Ruchi\Book My Show Clone\BMSC\b-m-s-c"
+```
+
+2. Install dependencies:
+
+```powershell
+npm install
+```
+
+3. Start the development server:
+
+```powershell
+npm start
+```
+
+4. Open the app in a browser (if it doesn't open automatically):
+
+```
+http://localhost:3000
+```
+
+## Environment variables
+
+The project currently includes a TMDB API key directly in `src/App.js`. For security, it's better to move this into an environment variable.
+
+Create a `.env` file in the `b-m-s-c` folder with:
+
+```
+REACT_APP_TMDB_API_KEY=your_tmdb_api_key_here
+```
+
+Then update `src/App.js` to use `process.env.REACT_APP_TMDB_API_KEY` instead of the hardcoded value:
+
+```js
+axios.defaults.params = {};
+axios.defaults.params["api_key"] = process.env.REACT_APP_TMDB_API_KEY;
+```
+
+Razorpay: the project includes a Razorpay test key (`rzp_test_I7T5qR7uWvVsLX`) inside `src/PaymentModal/Payment.Component.jsx`. Replace it with your own test or live key as needed and never commit live keys to the repository.
+
+## Scripts
+
+- `npm start` - Start dev server (react-scripts start)
+- `npm test` - Run tests (react-scripts test)
+- `npm run build` - Build for production
+- `npm run eject` - Eject CRA (one-way)
+
+## Notes & troubleshooting
+
+- ESLint errors can stop the dev server from compiling. One known issue in this repo was the use of an undefined global `close` inside `Payment.Component.jsx` — that was fixed to call the local `closeModal` function.
+- If you see a Browserslist warning:
+
+  ```text
+  Browserslist: caniuse-lite is outdated. Please run:
+    npx update-browserslist-db@latest
+  ```
+
+  Run the suggested command to update the database.
+
+- If `npm start` fails due to a missing script `dev`, use `npm start` since this project uses CRA (there is no `dev` script by default).
+
+- If ports are occupied (default 3000):
+
+  ```powershell
+  $env:PORT=3001; npm start
+  ```
+
+- To fix dependency audit issues run:
+
+  ```powershell
+  npm audit fix
+  # or to force (may introduce breaking changes)
+  npm audit fix --force
+  ```
+
+## Contributing
+
+If you'd like to contribute, please fork the repo and open a PR. Keep API keys and secrets out of commits — use `.env` and document required variables in this README.
+
+## License
+
+This repository does not include a license file. Add a `LICENSE` if you intend to open-source it.
+
+---
+
+If you'd like, I can:
+
+- Move the TMDB key to `.env` and update `src/App.js` for you.
+- Add a `.env.example` file showing required environment variables.
+- Scaffold a tiny Express + MongoDB backend for bookings and show how to connect it to this frontend.
+
+Tell me which of the above you'd like me to do next.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

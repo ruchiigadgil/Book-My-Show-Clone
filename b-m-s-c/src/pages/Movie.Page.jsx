@@ -106,7 +106,8 @@ const settingsCast = {
   return (
     <>
       <MovieHero />
-      <div className="my-12 container px-4 lg:w-2/1">
+      {/* Center page content: use container + mx-auto and a sensible max width on large screens */}
+      <div className="my-12 container mx-auto px-4 lg:max-w-6xl">
         <div className="flex flex-col items-start gap-3">
           <h1 className="text-gray-800 font-bold gap-3">About The Movie</h1>
           <p>{movie.overview}</p>

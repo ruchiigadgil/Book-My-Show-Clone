@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import { useState } from "react";
+// no local state needed here; remove unused import
 
 const PaymentModel = ({setIsOpen,isOpen,price}) => {
     const closeModal = () => {
@@ -30,7 +30,7 @@ const launchRazorPay = () => {
         open={isOpen}
         as="div"
         className="relative z-50 focus:outline-none"
-        onClose={close}
+        onClose={closeModal}
       >
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
@@ -56,7 +56,7 @@ const launchRazorPay = () => {
                 </Button>
                 <Button
                   className="inline-flex justify-center rounded-md border border-transparent bg-red-500 px-4 py-2 text-sm font-medium text-white-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-700 focus-visible:ring-offset-2"
-                  onClick={close}
+                  onClick={closeModal}
                 >
                   Cancel Payment
                 </Button>
